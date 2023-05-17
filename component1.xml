@@ -7,7 +7,7 @@ Outcomes:
 1. Check Atomsphere, Integration, Deployments. Outcome: New Dev and Prod environment deployments. Value: Auto-deployment of Packaged Component to multiple environments
 2. Check Atomsphere, Integration, Process Reporting, Filter: Sample Process to Deploy. Outcome: Process has been recently executed successfully. Value: Automated testing of deployed Packaged Component in Dev before auto-deployment to Prod.
 3. Check my Git repo: https://github.com/dwille-boomi/test_repo. Outcome: Packaged Component payload checked into external code repo. Value: Automated history capture and potential integration into other pipeline processes (eg SonarQube).
-4. Check Jenkins Pipeline Build History, Console Output: https://cicd.boomidemo.com/job/boomi_pipeline_demo. Outcome: Build kicked off and Component ID has been captured. Value: We kick off and supply data to the pipeline so the customer can do what they want with it from there.</bns:description>
+4. Check Jenkins Pipeline Build History , Console Output: https://cicd.boomidemo.com/job/boomi_pipeline_demo. Outcome: Build kicked off and Component ID has been captured. Value: We kick off and supply data to the pipeline so the customer can do what they want with it from there.</bns:description>
   <bns:object>
     <process allowSimultaneous="false" enableUserLog="false" processLogOnErrorOnly="false" purgeDataImmediately="false" updateRunDates="true" workload="general">
       <shapes>
