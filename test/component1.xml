@@ -1,0 +1,399 @@
+<bns:Component xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bns="http://api.platform.boomi.com/" folderFullPath="Boomi_2JamesStanway/Process Library/CustomerDemos/ETL" componentId="6ad4dca9-6d4f-4640-8d37-a3721f5d54b5" version="33" name="SubProcessSalesLoad" type="process" createdDate="2020-10-08T14:41:47Z" createdBy="james.stanway@boomi.com" modifiedDate="2023-02-07T18:06:04Z" modifiedBy="james.stanway@boomi.com" deleted="false" currentVersion="true" folderName="ETL" folderId="RjoyMjQwNDAw">
+  <bns:encryptedValues/>
+  <bns:description></bns:description>
+  <bns:object>
+    <process xmlns="" allowSimultaneous="false" enableUserLog="false" processLogOnErrorOnly="false" purgeDataImmediately="false" updateRunDates="false" workload="general">
+      <shapes>
+        <shape image="start" name="shape1" shapetype="start" userlabel="" x="48.0" y="48.0">
+          <configuration>
+            <passthroughaction/>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape1.dragpoint1" toShape="shape21" x="224.0" y="56.0">
+              <linesegment length="0" name="shape1.dragpoint1.lineseg1" orient="horizontal" x="81.0" y="62.0"/>
+              <linesegment length="0" name="shape1.dragpoint1.lineseg2" orient="vertical" x="81.0" y="62.0"/>
+              <linesegment length="79" name="shape1.dragpoint1.lineseg3" orient="horizontal" x="81.0" y="62.0"/>
+              <linesegment length="0" name="shape1.dragpoint1.lineseg4" orient="vertical" x="160.0" y="62.0"/>
+              <linesegment length="64" name="shape1.dragpoint1.lineseg5" orient="horizontal" x="160.0" y="62.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="stop_icon" name="shape7" shapetype="stop" userlabel="" x="1392.0" y="48.0">
+          <configuration>
+            <stop continue="true"/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="dataprocess_icon" name="shape11" shapetype="dataprocess" userlabel="" x="624.0" y="48.0">
+          <configuration>
+            <dataprocess>
+              <step index="1" key="1" name="Split Documents" processtype="8">
+                <documentsplit profileType="ff">
+                  <SplitOptions>
+                    <FFOptions headersOption="none" profileId="6c423365-743e-4a47-82c5-e97822719db5" splitOption="split_line"/>
+                  </SplitOptions>
+                </documentsplit>
+              </step>
+            </dataprocess>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape11.dragpoint1" toShape="shape25" x="800.0" y="56.0">
+              <linesegment length="0" name="shape11.dragpoint1.lineseg1" orient="horizontal" x="657.0" y="62.0"/>
+              <linesegment length="0" name="shape11.dragpoint1.lineseg2" orient="vertical" x="657.0" y="62.0"/>
+              <linesegment length="79" name="shape11.dragpoint1.lineseg3" orient="horizontal" x="657.0" y="62.0"/>
+              <linesegment length="0" name="shape11.dragpoint1.lineseg4" orient="vertical" x="736.0" y="62.0"/>
+              <linesegment length="64" name="shape11.dragpoint1.lineseg5" orient="horizontal" x="736.0" y="62.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="connectoraction_icon" name="shape16" shapetype="connectoraction" userlabel="" x="1008.0" y="368.0">
+          <configuration>
+            <connectoraction actionType="Send" allowDynamicCredentials="NONE" connectionId="2fa5b3e5-21a1-4b2d-8383-c49a5654bc63" connectorType="mail" hideSettings="false" operationId="23064657-c90b-43b1-b9ec-19a0c72601b6">
+              <parameters/>
+            </connectoraction>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape16.dragpoint1" toShape="shape18" x="1184.0" y="376.0">
+              <linesegment length="0" name="shape16.dragpoint1.lineseg1" orient="horizontal" x="1041.0" y="382.0"/>
+              <linesegment length="0" name="shape16.dragpoint1.lineseg2" orient="vertical" x="1041.0" y="382.0"/>
+              <linesegment length="79" name="shape16.dragpoint1.lineseg3" orient="horizontal" x="1041.0" y="382.0"/>
+              <linesegment length="0" name="shape16.dragpoint1.lineseg4" orient="vertical" x="1120.0" y="382.0"/>
+              <linesegment length="64" name="shape16.dragpoint1.lineseg5" orient="horizontal" x="1120.0" y="382.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="message_icon" name="shape17" shapetype="message" userlabel="" x="816.0" y="368.0">
+          <configuration>
+            <message combined="false">
+              <msgTxt>ETL Job run on {1} completed.
+Total Orders Processed: {2}
+Source: {3}
+Company NAme:  {4}</msgTxt>
+              <msgParameters>
+                <parametervalue key="0" valueType="date">
+                  <dateparameter dateparametertype="current" datetimemask="MM-dd-yyyy"/>
+                </parametervalue>
+                <parametervalue key="1" valueType="profile">
+                  <profileelement elementId="3" elementName="lineCount (Record/Elements/lineCount)" profileId="9acf9654-722f-48a4-b4c4-69078982f2a7" profileType="profile.flatfile"/>
+                </parametervalue>
+                <parametervalue key="2" valueType="process">
+                  <processparameter processproperty="dpp_source" processpropertydefaultvalue=""/>
+                </parametervalue>
+                <parametervalue key="3" valueType="process">
+                  <processparameter processproperty="dpp_CompanyName" processpropertydefaultvalue=""/>
+                </parametervalue>
+              </msgParameters>
+            </message>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape17.dragpoint1" toShape="shape16" x="992.0" y="376.0">
+              <linesegment length="0" name="shape17.dragpoint1.lineseg1" orient="horizontal" x="849.0" y="382.0"/>
+              <linesegment length="0" name="shape17.dragpoint1.lineseg2" orient="vertical" x="849.0" y="382.0"/>
+              <linesegment length="79" name="shape17.dragpoint1.lineseg3" orient="horizontal" x="849.0" y="382.0"/>
+              <linesegment length="0" name="shape17.dragpoint1.lineseg4" orient="vertical" x="928.0" y="382.0"/>
+              <linesegment length="64" name="shape17.dragpoint1.lineseg5" orient="horizontal" x="928.0" y="382.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="stop_icon" name="shape18" shapetype="stop" userlabel="" x="1200.0" y="368.0">
+          <configuration>
+            <stop continue="true"/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="connectoraction_icon" name="shape19" shapetype="connectoraction" userlabel="Insert Orders" x="1200.0" y="48.0">
+          <configuration>
+            <connectoraction actionType="Send" allowDynamicCredentials="NONE" connectionId="8fc6ba94-5b5e-40b3-a8a4-2e354d876ab0" connectorType="database" hideSettings="false" operationId="a0f32d01-cefd-46dc-b5ed-af78e742cfd5" parameter-profile="EMBEDDED|databaseparameterchooser|b7034788-684f-4725-aa6f-1a7cf2313bbe|a0f32d01-cefd-46dc-b5ed-af78e742cfd5">
+              <parameters/>
+              <dynamicProperties/>
+            </connectoraction>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape19.dragpoint1" toShape="shape7" x="1376.0" y="56.0">
+              <linesegment length="0" name="shape19.dragpoint1.lineseg1" orient="horizontal" x="1233.0" y="62.0"/>
+              <linesegment length="0" name="shape19.dragpoint1.lineseg2" orient="vertical" x="1233.0" y="62.0"/>
+              <linesegment length="79" name="shape19.dragpoint1.lineseg3" orient="horizontal" x="1233.0" y="62.0"/>
+              <linesegment length="0" name="shape19.dragpoint1.lineseg4" orient="vertical" x="1312.0" y="62.0"/>
+              <linesegment length="64" name="shape19.dragpoint1.lineseg5" orient="horizontal" x="1312.0" y="62.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="map_icon" name="shape20" shapetype="map" userlabel="" x="1008.0" y="48.0">
+          <configuration>
+            <map mapId="bae22f07-91af-41ee-839c-7ad86a026ae7"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape20.dragpoint1" toShape="shape19" x="1184.0" y="56.0">
+              <linesegment length="0" name="shape20.dragpoint1.lineseg1" orient="horizontal" x="1041.0" y="62.0"/>
+              <linesegment length="0" name="shape20.dragpoint1.lineseg2" orient="vertical" x="1041.0" y="62.0"/>
+              <linesegment length="79" name="shape20.dragpoint1.lineseg3" orient="horizontal" x="1041.0" y="62.0"/>
+              <linesegment length="0" name="shape20.dragpoint1.lineseg4" orient="vertical" x="1120.0" y="62.0"/>
+              <linesegment length="64" name="shape20.dragpoint1.lineseg5" orient="horizontal" x="1120.0" y="62.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="catcherrors_icon" name="shape21" shapetype="catcherrors" userlabel="" x="240.0" y="48.0">
+          <configuration>
+            <catcherrors catchAll="true" retryCount="0"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="default" name="shape21.dragpoint1" text="Try" toShape="shape34" x="416.0" y="56.0">
+              <linesegment length="0" name="shape21.dragpoint1.lineseg1" orient="horizontal" x="273.0" y="62.0"/>
+              <linesegment length="0" name="shape21.dragpoint1.lineseg2" orient="vertical" x="273.0" y="62.0"/>
+              <linesegment length="79" name="shape21.dragpoint1.lineseg3" orient="horizontal" x="273.0" y="62.0"/>
+              <linesegment length="0" name="shape21.dragpoint1.lineseg4" orient="vertical" x="352.0" y="62.0"/>
+              <linesegment label="Try" length="64" name="shape21.dragpoint1.lineseg5" orient="horizontal" x="352.0" y="62.0"/>
+            </dragpoint>
+            <dragpoint identifier="error" name="shape21.dragpoint2" text="Catch" toShape="shape24" x="416.0" y="696.0">
+              <linesegment length="0" name="shape21.dragpoint2.lineseg1" orient="horizontal" x="273.0" y="62.0"/>
+              <linesegment length="0" name="shape21.dragpoint2.lineseg2" orient="vertical" x="273.0" y="62.0"/>
+              <linesegment length="79" name="shape21.dragpoint2.lineseg3" orient="horizontal" x="273.0" y="62.0"/>
+              <linesegment length="640" name="shape21.dragpoint2.lineseg4" orient="vertical" x="352.0" y="62.0"/>
+              <linesegment label="Catch" length="64" name="shape21.dragpoint2.lineseg5" orient="horizontal" x="352.0" y="702.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="map_icon" name="shape24" shapetype="map" userlabel="" x="432.0" y="688.0">
+          <configuration>
+            <map mapId="519db241-687d-4db3-8af0-ea5b87bd014a"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape24.dragpoint1" toShape="shape23" x="608.0" y="696.0">
+              <linesegment length="0" name="shape24.dragpoint1.lineseg1" orient="horizontal" x="465.0" y="702.0"/>
+              <linesegment length="0" name="shape24.dragpoint1.lineseg2" orient="vertical" x="465.0" y="702.0"/>
+              <linesegment length="79" name="shape24.dragpoint1.lineseg3" orient="horizontal" x="465.0" y="702.0"/>
+              <linesegment length="0" name="shape24.dragpoint1.lineseg4" orient="vertical" x="544.0" y="702.0"/>
+              <linesegment length="64" name="shape24.dragpoint1.lineseg5" orient="horizontal" x="544.0" y="702.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="processcall_icon" name="shape23" shapetype="processcall" userlabel="" x="624.0" y="688.0">
+          <configuration>
+            <processcall abort="true" processId="4d9bfa44-8ce2-41ca-bd95-b1a7f2d01ad1" wait="true">
+              <parameters/>
+              <returnpaths>
+                <returnpaths childShapeName="shape16" returnLabel=""/>
+              </returnpaths>
+            </processcall>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="shape16" name="shape23.dragpoint1" toShape="shape41" x="800.0" y="696.0">
+              <linesegment length="0" name="shape23.dragpoint1.lineseg1" orient="horizontal" x="657.0" y="702.0"/>
+              <linesegment length="0" name="shape23.dragpoint1.lineseg2" orient="vertical" x="657.0" y="702.0"/>
+              <linesegment length="79" name="shape23.dragpoint1.lineseg3" orient="horizontal" x="657.0" y="702.0"/>
+              <linesegment length="0" name="shape23.dragpoint1.lineseg4" orient="vertical" x="736.0" y="702.0"/>
+              <linesegment length="64" name="shape23.dragpoint1.lineseg5" orient="horizontal" x="736.0" y="702.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="flowcontrol_icon" name="shape25" shapetype="flowcontrol" userlabel="" x="816.0" y="48.0">
+          <configuration>
+            <flowcontrol chunkStyle="threadOnly" chunks="3" forEachCount="5"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape25.dragpoint1" toShape="shape20" x="992.0" y="56.0">
+              <linesegment length="0" name="shape25.dragpoint1.lineseg1" orient="horizontal" x="849.0" y="62.0"/>
+              <linesegment length="0" name="shape25.dragpoint1.lineseg2" orient="vertical" x="849.0" y="62.0"/>
+              <linesegment length="79" name="shape25.dragpoint1.lineseg3" orient="horizontal" x="849.0" y="62.0"/>
+              <linesegment length="0" name="shape25.dragpoint1.lineseg4" orient="vertical" x="928.0" y="62.0"/>
+              <linesegment length="64" name="shape25.dragpoint1.lineseg5" orient="horizontal" x="928.0" y="62.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="map_icon" name="shape33" shapetype="map" userlabel="" x="624.0" y="368.0">
+          <configuration>
+            <map mapId="cd6da891-a15e-4eb7-b923-e24c9ca266fe"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape33.dragpoint1" toShape="shape17" x="800.0" y="376.0">
+              <linesegment length="0" name="shape33.dragpoint1.lineseg1" orient="horizontal" x="657.0" y="382.0"/>
+              <linesegment length="0" name="shape33.dragpoint1.lineseg2" orient="vertical" x="657.0" y="382.0"/>
+              <linesegment length="79" name="shape33.dragpoint1.lineseg3" orient="horizontal" x="657.0" y="382.0"/>
+              <linesegment length="0" name="shape33.dragpoint1.lineseg4" orient="vertical" x="736.0" y="382.0"/>
+              <linesegment length="64" name="shape33.dragpoint1.lineseg5" orient="horizontal" x="736.0" y="382.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="branch_icon" name="shape34" shapetype="branch" userlabel="" x="432.0" y="48.0">
+          <configuration>
+            <branch numBranches="4"/>
+          </configuration>
+          <dragpoints>
+            <dragpoint identifier="1" name="shape34.dragpoint1" text="1" toShape="shape11" x="608.0" y="56.0">
+              <linesegment length="0" name="shape34.dragpoint1.lineseg1" orient="horizontal" x="465.0" y="62.0"/>
+              <linesegment length="0" name="shape34.dragpoint1.lineseg2" orient="vertical" x="465.0" y="62.0"/>
+              <linesegment length="79" name="shape34.dragpoint1.lineseg3" orient="horizontal" x="465.0" y="62.0"/>
+              <linesegment length="0" name="shape34.dragpoint1.lineseg4" orient="vertical" x="544.0" y="62.0"/>
+              <linesegment label="1" length="64" name="shape34.dragpoint1.lineseg5" orient="horizontal" x="544.0" y="62.0"/>
+            </dragpoint>
+            <dragpoint identifier="2" name="shape34.dragpoint2" text="2" toShape="shape40" x="608.0" y="216.0">
+              <linesegment length="0" name="shape34.dragpoint2.lineseg1" orient="horizontal" x="465.0" y="62.0"/>
+              <linesegment length="0" name="shape34.dragpoint2.lineseg2" orient="vertical" x="465.0" y="62.0"/>
+              <linesegment length="79" name="shape34.dragpoint2.lineseg3" orient="horizontal" x="465.0" y="62.0"/>
+              <linesegment length="160" name="shape34.dragpoint2.lineseg4" orient="vertical" x="544.0" y="62.0"/>
+              <linesegment label="2" length="64" name="shape34.dragpoint2.lineseg5" orient="horizontal" x="544.0" y="222.0"/>
+            </dragpoint>
+            <dragpoint identifier="3" name="shape34.dragpoint3" text="3" toShape="shape33" x="608.0" y="376.0">
+              <linesegment length="0" name="shape34.dragpoint3.lineseg1" orient="horizontal" x="465.0" y="62.0"/>
+              <linesegment length="0" name="shape34.dragpoint3.lineseg2" orient="vertical" x="465.0" y="62.0"/>
+              <linesegment length="79" name="shape34.dragpoint3.lineseg3" orient="horizontal" x="465.0" y="62.0"/>
+              <linesegment length="320" name="shape34.dragpoint3.lineseg4" orient="vertical" x="544.0" y="62.0"/>
+              <linesegment label="3" length="64" name="shape34.dragpoint3.lineseg5" orient="horizontal" x="544.0" y="382.0"/>
+            </dragpoint>
+            <dragpoint identifier="4" name="shape34.dragpoint4" text="4" toShape="shape42" x="608.0" y="536.0">
+              <linesegment length="0" name="shape34.dragpoint4.lineseg1" orient="horizontal" x="465.0" y="62.0"/>
+              <linesegment length="0" name="shape34.dragpoint4.lineseg2" orient="vertical" x="465.0" y="62.0"/>
+              <linesegment length="79" name="shape34.dragpoint4.lineseg3" orient="horizontal" x="465.0" y="62.0"/>
+              <linesegment length="480" name="shape34.dragpoint4.lineseg4" orient="vertical" x="544.0" y="62.0"/>
+              <linesegment label="4" length="64" name="shape34.dragpoint4.lineseg5" orient="horizontal" x="544.0" y="542.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="programcmd_icon" name="shape36" shapetype="programcmd" userlabel="" x="816.0" y="208.0">
+          <configuration>
+            <programcmd perExecution="true">
+              <configuration valueType="sql">
+                <sqlparameter connection="8fc6ba94-5b5e-40b3-a8a4-2e354d876ab0">
+                  <sqltoexecute>insert into dbo.RevenueRollup(CompanyName,Source,FiscalPeriod,Amount)
+	select companyName,Source, fiscalPeriod, Sum(amount)
+    from dbo.Sales
+    group by companyname, source, FiscalPeriod</sqltoexecute>
+                </sqlparameter>
+              </configuration>
+              <parameters/>
+            </programcmd>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape36.dragpoint1" toShape="shape37" x="992.0" y="216.0">
+              <linesegment length="0" name="shape36.dragpoint1.lineseg1" orient="horizontal" x="849.0" y="222.0"/>
+              <linesegment length="0" name="shape36.dragpoint1.lineseg2" orient="vertical" x="849.0" y="222.0"/>
+              <linesegment length="79" name="shape36.dragpoint1.lineseg3" orient="horizontal" x="849.0" y="222.0"/>
+              <linesegment length="0" name="shape36.dragpoint1.lineseg4" orient="vertical" x="928.0" y="222.0"/>
+              <linesegment length="64" name="shape36.dragpoint1.lineseg5" orient="horizontal" x="928.0" y="222.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="stop_icon" name="shape37" shapetype="stop" userlabel="" x="1008.0" y="208.0">
+          <configuration>
+            <stop continue="true"/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="documentproperties_icon" name="shape38" shapetype="documentproperties" userlabel="" x="48.0" y="848.0">
+          <configuration>
+            <documentproperties>
+              <documentproperty defaultValue="" isTradingPartner="false" name="Dynamic Process Property - OrderDate" persist="false" propertyId="process.OrderDate">
+                <sourcevalues>
+                  <parametervalue key="1" valueType="profile">
+                    <profileelement elementId="5" elementName="OrderDate (Record/Elements/OrderDate)" profileId="7fd5c160-bdd2-4da1-989c-8e9a90b6f04a" profileType="profile.flatfile"/>
+                  </parametervalue>
+                </sourcevalues>
+              </documentproperty>
+            </documentproperties>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape38.dragpoint1" toShape="unset" x="224.0" y="857.0">
+              <linesegment length="0" name="shape38.dragpoint1.lineseg1" orient="horizontal" x="81.0" y="862.0"/>
+              <linesegment length="0" name="shape38.dragpoint1.lineseg2" orient="vertical" x="81.0" y="862.0"/>
+              <linesegment length="79" name="shape38.dragpoint1.lineseg3" orient="horizontal" x="81.0" y="862.0"/>
+              <linesegment length="1" name="shape38.dragpoint1.lineseg4" orient="vertical" x="160.0" y="862.0"/>
+              <linesegment length="64" name="shape38.dragpoint1.lineseg5" orient="horizontal" x="160.0" y="863.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="message_icon" name="shape39" shapetype="message" userlabel="" x="48.0" y="1008.0">
+          <configuration>
+            <message combined="false">
+              <msgTxt>Opportunity Name,Type,Amount,Close Date,Fiscal Period,Opportunity Owner,Account Name
+AirOne,,900000,1/29/2020,Q1-2020,Boomi User,Airlines 1.0
+First Purchase,,10000,7/17/2020,Q3-2020,Boomi User,Alienware Computer Inc
+ARD opt,,100,2/12/2020,Q1-2020,Boomi User,ARD Test
+First Purchase,,1000,9/10/2020,Q3-2020,Boomi User,Black Notebook Inc
+First Purchase,,1000,3/17/2020,Q1-2020,Boomi User,Blue Belt Co
+Opp Bo,,12300,7/6/2020,Q3-2020,Boomi User,Bo Ent
+Huge Opp,,100000,4/13/2020,Q2-2020,Boomi User,Cirrus Oil
+First Purchase,,1000,9/21/2020,Q3-2020,Boomi User,Clear Plastic Bottle Inc
+First Purchase,,1000,7/9/2020,Q3-2020,Boomi User,Coca Cola Christmass
+Opp Cool,,12300,7/6/2020,Q3-2020,Boomi User,CoolStuff4u
+DETROIT PISTONS DEMO OPP,New Business,100000,8/13/2020,Q3-2020,Boomi User,DETROIT PISTONS</msgTxt>
+              <msgParameters/>
+            </message>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape39.dragpoint1" toShape="unset" x="224.0" y="1017.0">
+              <linesegment length="0" name="shape39.dragpoint1.lineseg1" orient="horizontal" x="81.0" y="1022.0"/>
+              <linesegment length="0" name="shape39.dragpoint1.lineseg2" orient="vertical" x="81.0" y="1022.0"/>
+              <linesegment length="79" name="shape39.dragpoint1.lineseg3" orient="horizontal" x="81.0" y="1022.0"/>
+              <linesegment length="1" name="shape39.dragpoint1.lineseg4" orient="vertical" x="160.0" y="1022.0"/>
+              <linesegment length="64" name="shape39.dragpoint1.lineseg5" orient="horizontal" x="160.0" y="1023.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="programcmd_icon" name="shape40" shapetype="programcmd" userlabel="" x="624.0" y="208.0">
+          <configuration>
+            <programcmd perExecution="true">
+              <configuration valueType="sql">
+                <sqlparameter connection="8fc6ba94-5b5e-40b3-a8a4-2e354d876ab0">
+                  <sqltoexecute>delete from dbo.revenuerollup</sqltoexecute>
+                </sqlparameter>
+              </configuration>
+              <parameters/>
+            </programcmd>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape40.dragpoint1" toShape="shape36" x="800.0" y="216.0">
+              <linesegment length="0" name="shape40.dragpoint1.lineseg1" orient="horizontal" x="657.0" y="222.0"/>
+              <linesegment length="0" name="shape40.dragpoint1.lineseg2" orient="vertical" x="657.0" y="222.0"/>
+              <linesegment length="79" name="shape40.dragpoint1.lineseg3" orient="horizontal" x="657.0" y="222.0"/>
+              <linesegment length="0" name="shape40.dragpoint1.lineseg4" orient="vertical" x="736.0" y="222.0"/>
+              <linesegment length="64" name="shape40.dragpoint1.lineseg5" orient="horizontal" x="736.0" y="222.0"/>
+            </dragpoint>
+          </dragpoints>
+        </shape>
+        <shape image="stop_icon" name="shape41" shapetype="stop" userlabel="" x="816.0" y="688.0">
+          <configuration>
+            <stop continue="true"/>
+          </configuration>
+          <dragpoints/>
+        </shape>
+        <shape image="processcall_icon" name="shape42" shapetype="processcall" userlabel="" x="624.0" y="528.0">
+          <configuration>
+            <processcall abort="true" processId="8fe9cae0-e240-495f-bd72-8726cfd47a88" wait="true">
+              <parameters/>
+              <returnpaths/>
+            </processcall>
+          </configuration>
+          <dragpoints/>
+        </shape>
+      </shapes>
+    </process>
+  </bns:object>
+  <bns:processOverrides>
+    <Overrides xmlns="" allowScheduleOverride="false">
+      <Connections>
+        <ConnectionOverride id="4e97214d-ec35-4324-958f-4cabc5e06442">
+          <field id="directory" label="Directory" overrideable="false" xpath="DiskSettings/@directory"/>
+        </ConnectionOverride>
+      </Connections>
+      <PartnerOverrides/>
+      <Properties>
+        <PropertyOverride name="OrderDate"/>
+      </Properties>
+      <Extensions>
+        <ObjectDefinitions>
+          <unusedProfiles/>
+        </ObjectDefinitions>
+        <DataMaps>
+          <unusedMaps/>
+        </DataMaps>
+      </Extensions>
+      <CrossReferenceOverrides/>
+      <PGPOverrides/>
+      <DefinedProcessPropertyOverrides>
+        <OverrideableDefinedProcessPropertyComponent componentId="6e9570e6-418c-4448-a3b5-fadd99e7a2ee">
+          <OverrideableDefinedProcessPropertyValue key="3990c81f-f5f3-4ea3-b311-2f6295f6e65d" name="Process Name" overrideable="false"/>
+        </OverrideableDefinedProcessPropertyComponent>
+      </DefinedProcessPropertyOverrides>
+    </Overrides>
+  </bns:processOverrides>
+</bns:Component>
