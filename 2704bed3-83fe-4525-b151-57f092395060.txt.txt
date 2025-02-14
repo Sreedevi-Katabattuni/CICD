@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?><Component xmlns:bns="http://api.platform.boomi.com/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" branchId="Qjo0Nzc4MTA" branchName="main" componentId="2704bed3-83fe-4525-b151-57f092395060" createdBy="nagendra.kalluri@boomi.com" createdDate="2025-02-13T13:20:01Z" currentVersion="true" deleted="false" folderFullPath="Emirates Airline/Boomi/TC20" folderId="Rjo3NDE0MDQ3" folderName="TC20" modifiedBy="nagendra.kalluri@boomi.com" modifiedDate="2025-02-13T13:20:01Z" name="TC20: IBM MQ to IBM MQ" type="process" version="1">
+  <bns:encryptedValues/>
+  <bns:description/>
+  <bns:object>
+    <process allowSimultaneous="false" enableUserLog="false" processLogOnErrorOnly="false" purgeDataImmediately="false" updateRunDates="true" workload="general">
+      <shapes>
+        <shape image="start" name="shape1" shapetype="start" userlabel="" x="96.0" y="94.0">
+          <configuration>
+            <noaction/>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape1.dragpoint1" toShape="shape2" x="240.0" y="104.0"/>
+          </dragpoints>
+        </shape>
+        <shape image="connectoraction_icon" name="shape2" shapetype="connectoraction" userlabel="" x="256.0" y="96.0">
+          <configuration>
+            <connectoraction actionType="SEND" allowDynamicCredentials="NONE" connectionId="2ad2b2f8-d36b-4c24-a419-ea966e37b82f" connectorType="officialboomi-X3979C-jmsv2-prod" hideSettings="false">
+              <parameters/>
+              <dynamicProperties/>
+            </connectoraction>
+          </configuration>
+          <dragpoints>
+            <dragpoint name="shape2.dragpoint1" toShape="unset" x="388.0" y="106.0"/>
+          </dragpoints>
+        </shape>
+      </shapes>
+    </process>
+  </bns:object>
+  <bns:processOverrides/>
+</Component>
